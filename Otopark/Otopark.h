@@ -1,21 +1,21 @@
 #pragma once
 #include <iostream>
 #include <string>
-#include <thread> // std::this_thread::sleep_for için
-#include <chrono> // std::chrono::milliseconds için
+#include <thread> // std::this_thread::sleep_for iÃ§in
+#include <chrono> // std::chrono::milliseconds iÃ§in
 /*
-* list fonksiyonunda yapılabilecekler menüsü açılır. Seçime göre işlemi gerçekleştirecek fonksiyona gidilir.
-* araç çıkışı için öncelikle şifre doğrulaması istenir. 3 kez deneme hakkına sahiptir.
+* list fonksiyonunda yapÃ½labilecekler menÃ¼sÃ¼ aÃ§Ã½lÃ½r. SeÃ§ime gÃ¶re iÃ¾lemi gerÃ§ekleÃ¾tirecek fonksiyona gidilir.
+* araÃ§ Ã§Ã½kÃ½Ã¾Ã½ iÃ§in Ã¶ncelikle Ã¾ifre doÃ°rulamasÃ½ istenir. 3 kez deneme hakkÃ½na sahiptir.
 */
 class Otopark
 {
 public:
-	std::string userID = "suheda";
-	std::string password = "bngl";
+	std::string userID = "admin";
+	std::string password = "password";
 	std::string plaka;
 	int counter = 0;
-	int floor[5] = { 0,1,2,3,4 };	//Kat numaraları
-	int space[10] = { 1,2,3,4,5,6,7,8,9,10 };	//Alan numaraları
+	int floor[5] = { 0,1,2,3,4 };	//Kat numaralarÃ½
+	int space[10] = { 1,2,3,4,5,6,7,8,9,10 };	//Alan numaralarÃ½
 	int option = 0;
 
 	void menu();
@@ -26,7 +26,7 @@ public:
 	bool passwordCheck();
 
 	std::string passwordRegister[5][10];
-	std::string parkingSpot[5][10];	//otopark katları
+	std::string parkingSpot[5][10];	//otopark katlarÃ½
 };
 
 void Otopark::menu()
@@ -63,7 +63,7 @@ void Otopark::menu()
 	}
 
 }
-// araç listesini ekrana yazdırır.
+// araÃ§ listesini ekrana yazdÃ½rÃ½r.
 inline void Otopark::vehicleList() {
 
 	std::cout << "Otopark arac listeleme" << std::endl;
@@ -84,17 +84,17 @@ inline void Otopark::vehicleIn() {
 	std::cout << "Otopark arac girisi" << std::endl << std::endl;
 	int req = 0;
 
-	std::cout << "Kat: ";	//kat numarası istenir
+	std::cout << "Kat: ";	//kat numarasÃ½ istenir
 	std::cin >> req;
 
 
 	for (int j = 0; j < 10; j++) {
-		if (parkingSpot[floor[req]][j].empty()) // istenilen katta boş olan alanlar yazdırılır
+		if (parkingSpot[floor[req]][j].empty()) // istenilen katta boÃ¾ olan alanlar yazdÃ½rÃ½lÃ½r
 		{
 			std::cout << floor[req] << ". kat " << j + 1 << ". alan bostur." << std::endl;
-			std::cout << "Arac Plaka: ";		// kayıt edilecek araba plakası girişi
+			std::cout << "Arac Plaka: ";		// kayÃ½t edilecek araba plakasÃ½ giriÃ¾i
 			std::cin >> plaka;
-			parkingSpot[floor[req]][j] = plaka;	//boş olan ilk alana kayıt yapılır.
+			parkingSpot[floor[req]][j] = plaka;	//boÃ¾ olan ilk alana kayÃ½t yapÃ½lÃ½r.
 			break;
 		}
 		else {
@@ -109,7 +109,7 @@ inline void Otopark::vehicleIn() {
 	menu();
 }
 
-// kullanıcı şifresi doğru girilmişse sil
+// kullanÃ½cÃ½ Ã¾ifresi doÃ°ru girilmiÃ¾se sil
 inline void Otopark::vehicleOut() {
 	vehicleList();
 
@@ -121,8 +121,8 @@ inline void Otopark::vehicleOut() {
 		for (int j = 0; j < 10; j++) {
 
 			if (plaka == parkingSpot[i][j]) {
-				parkingSpot[i][j].clear();	// plaka eşleşiyorsa araç çıkışı verilir.
-				if (parkingSpot[i][j].empty())	//araç çıkışı yapıldı mı? 
+				parkingSpot[i][j].clear();	// plaka eÃ¾leÃ¾iyorsa araÃ§ Ã§Ã½kÃ½Ã¾Ã½ verilir.
+				if (parkingSpot[i][j].empty())	//araÃ§ Ã§Ã½kÃ½Ã¾Ã½ yapÃ½ldÃ½ mÃ½? 
 				{
 					std::cout << "Park yeri bosaltilmistir." << std::endl;
 					break;
