@@ -7,7 +7,7 @@
 
 int main()
 {
-    Otopark otopark;
+    Otopark* otopark = new Otopark();
 
     if (otopark.passwordCheck()) {
         while (otopark.option != 4)
