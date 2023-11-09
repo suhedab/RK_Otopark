@@ -8,8 +8,6 @@
 int main()
 {
     Otopark otopark;
-   /* Otopark::counter = 0;
-    Otopark::floor = 0;*/
 
     if (otopark.passwordCheck()) {
         while (otopark.option != 4)
